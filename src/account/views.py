@@ -25,3 +25,19 @@ class RegistrationView(generics.CreateAPIView):
         return Response(
             {"message": "User registered successfully."}, status=status.HTTP_201_CREATED
         )
+
+
+'''
+    def put(self, request, *args, **kwargs):
+        """Handle HTTP PUT request to update user information."""
+        instance = self.get_object()
+        serializer = self.serializer_class(instance, data=request.data)
+        if not serializer.is_valid():
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+        serializer.save()
+        return Response(
+            {"message": "User information updated successfully."},
+            status=status.HTTP_200_OK,
+        )
+'''
