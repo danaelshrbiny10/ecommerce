@@ -1,6 +1,6 @@
 # Ecommerce Django Project
 
-[![python](https://img.shields.io/badge/Python-3.11-3776AB.svg?style=flat&logo=python&logoColor=yellow)](https://www.python.org) [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black) 
+[![python](https://img.shields.io/badge/Python-3.11-3776AB.svg?style=flat&logo=python&logoColor=yellow&color=darkblue)](https://www.python.org) [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)  [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-darkgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit) [![pydocstyle](https://img.shields.io/badge/pydocstyle-enabled-brown)](http://www.pydocstyle.org/en/stable/)
 
 This project is an ecommerce web application built using Django and Django Rest Framework. It provides functionality for user registration, authentication, product listing, cart management, order creation, and order viewing. The project utilizes PostgreSQL as the database backend and JWT authentication for user authentication. API endpoints are documented using Swagger.
 

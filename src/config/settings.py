@@ -135,3 +135,6 @@ REST_FRAMEWORK = {
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     )
 }
+
+INSTALLED_APPS += ['flake8']
+TEST_RUNNER = 'flake8.main.Flake8TestRunner'
