@@ -16,9 +16,22 @@ services:
       - db_port=5432
     volumes:
       - .:/app
+      - ./nginx.conf:/etc/nginx/sites-available/default
+      - ./supervisor.conf:/etc/supervisor/conf.d/
+    command: bash -c "python manage.py migrate && gunicorn myproject.wsgi:application --bind 0.0.0.0:8000"
+
   db:
     image: postgres
     environment:
       - POSTGRES_DB=ecommerce
       - POSTGRES_USER=postgress
       - POSTGRES_PASSWORD=1111
+
+  nginx:
+    image: nginx
+    ports:
+      - '80:80'
+    volumes:
+      - ./nginx.conf:/etc/nginx/sites-available/default
+    depends_on:
+      - web
