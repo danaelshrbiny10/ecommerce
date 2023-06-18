@@ -1,9 +1,7 @@
 """Api App serializers."""
 
 from rest_framework import serializers
-from .models import Product, CartItem
-import re
-from account.models import Customer
+from .models import Order, Product, CartItem
 
 
 class ProductSerializer(serializers.ModelSerializer):
@@ -25,23 +23,34 @@ class CartItemSerializer(serializers.ModelSerializer):
         """Meta class."""
 
         model = CartItem
-        fields = ["user", "product", "quantity"]
+        fields = [
+            "id",
+            "product",
+        ]
 
-    def create(self, validated_data: dict) -> Customer:
-        """Create customer."""
-        cart_items_data = validated_data.pop("cart_items", [])
-        customer = self._create_profile(validated_data=validated_data)
-        return self._create_cart_items(customer, cart_items_data)
+class OrderSerializer(serializers.ModelSerializer):
+    """Order serializer class for order model."""
 
-    def _create_cart_items(self, customer: Customer, cart_items_data: list) -> None:
-        """Private method to create cart items."""
-        for cart_item_data in cart_items_data:
-            product_data = cart_item_data.pop("product", {})
-            product = self._create_product(product_data)
-            CartItem.objects.create(
-                customer=customer, product=product, **cart_item_data
-            )
+    product = ProductSerializer()
 
-    def _create_product(self, product_data: dict) -> Product:
-        """Private method to create product."""
-        return Product.objects.create(**product_data)
+    class Meta:
+        """Meta class."""
+
+        model = Order
+        fields = [
+            "id",
+            "product",
+        ]
+
+
+class CartItemCreateSerializer(serializers.Serializer):
+    """Cart item serializer class for cart item model."""
+
+    product = serializers.IntegerField(required=True)
+
+    def validate_product(self, value):
+        if not Product.objects.filter(pk=value).exists():
+            raise serializers.ValidationError("This product is not avilable")
+        return Product.objects.filter(pk=value).first()
+
+

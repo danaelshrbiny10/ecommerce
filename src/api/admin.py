@@ -2,10 +2,8 @@
 
 
 from django.contrib import admin
-from .models import Product, CartItem
+from .models import Order, Product, CartItem
 
-
-# Register your models here.
 
 
 @admin.register(Product)
@@ -13,6 +11,7 @@ class ProductAdmin(admin.ModelAdmin):
     """Admin class for product model."""
 
     list_display = ("name", "price")
+    readonly_fields = ["created_at", "updated_at"]
     fieldsets = (
         (
             "product Information",
@@ -30,15 +29,17 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(CartItem)
-class CartItem(admin.ModelAdmin):
-    """Admin class for CartItem model."""
+@admin.register(Order)
+class CartAndOrdersModelAdmin(admin.ModelAdmin):
+    """Admin class for Cart and Models model."""
 
-    list_display = ("user", "product", "quantity")
+    list_display = ("user", "product")
+    readonly_fields = ["created_at", "updated_at"]
     fieldsets = (
         (
             "CartItem Information",
             {
-                "fields": ("user", "product", "quantity"),
+                "fields": ("user", "product"),
             },
         ),
         (

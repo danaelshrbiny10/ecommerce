@@ -1,21 +1,21 @@
 """Auth App admin."""
 
 from django.contrib import admin
-from . models import Customer
+from .models import Customer
 
 # Register your models here.
+
 
 @admin.register(Customer)
 class CustomerAdmin(admin.ModelAdmin):
     """Admin class for customer model."""
 
-    
     list_display = ("user", "phone_number")
     fieldsets = (
         (
             "customer Information",
             {
-                "fields": ("user", "phone_number","shipping_address"),
+                "fields": ("user", "phone_number", "shipping_address"),
             },
         ),
         (

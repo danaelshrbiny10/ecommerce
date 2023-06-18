@@ -15,16 +15,33 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Customer',
+            name="Customer",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('shipping_address', models.TextField(verbose_name='Shipping Address')),
-                ('phone_number', models.CharField(max_length=13, verbose_name='Phone Number')),
-                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("shipping_address", models.TextField(verbose_name="Shipping Address")),
+                (
+                    "phone_number",
+                    models.CharField(max_length=13, verbose_name="Phone Number"),
+                ),
+                (
+                    "user",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Customer',
-                'verbose_name_plural': 'Customers',
+                "verbose_name": "Customer",
+                "verbose_name_plural": "Customers",
             },
         ),
     ]
