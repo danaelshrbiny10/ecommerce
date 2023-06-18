@@ -26,7 +26,7 @@ from rest_framework import permissions
 
 schema_view = get_schema_view(
    openapi.Info(
-      title="Snippets API",
+      title="ecommerce API",
       default_version='v1',
       description="ecommerce",
       contact=openapi.Contact(email="contact@danaelshrbiny.com"),
