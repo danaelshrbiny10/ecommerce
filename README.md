@@ -2,7 +2,7 @@
 
 [![python](https://img.shields.io/badge/Python-3.11-3776AB.svg?style=flat&logo=python&logoColor=yellow&color=darkblue)](https://www.python.org) [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)   [![pydocstyle](https://img.shields.io/badge/pydocstyle-enabled-brown)](http://www.pydocstyle.org/en/stable/)
 
-This project is an ecommerce web application built using Django and Django Rest Framework. It provides functionality for user registration, authentication, product listing, cart management, order creation, and order viewing. The project utilizes PostgreSQL as the database backend and JWT authentication for user authentication. API endpoints are documented using Swagger.
+This project is an e-commerce web application built using Django and Django Rest Framework. It provides functionality for user registration, authentication, product listing, cart management, order creation, and order viewing. The project utilizes PostgreSQL as the database backend and JWT authentication for user authentication. API endpoints are documented using Swagger.
 
 ## Table of Contents
 
@@ -16,7 +16,7 @@ This project is an ecommerce web application built using Django and Django Rest 
 
 ## Installation
 
-To get started with the ecommerce project:
+To get started with the e-commerce project:
 
 1. Clone the repository to your local machine
 
@@ -78,7 +78,7 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
-The ecommerce web application should now be running locally at `http://localhost:8000/`.
+The e-commerce web application should now be running locally at `http://localhost:8000/`.
 
 ## Usage
 You can use this [postman collection](https://www.postman.com/science-saganist-7786711/workspace/bit68/collection/13841690-17f0b89b-493f-429a-b478-312d42d171f7?action=share&creator=13841690) to learn more about the API usage
@@ -105,7 +105,7 @@ To add a product to the cart, send a POST request to` /api/cart/` with the `prod
 
 6. Viewing Cart:
 
-To view the cart, send a GET request to `/api/cart/. This will display the products currently in the cart along with the authanticated user details.
+To view the cart, send a GET request to `/api/cart/. This will display the products currently in the cart along with the authenticated user details.
 
 7. Creating an Order:
 
@@ -113,7 +113,7 @@ To create an order with the products in the cart, send a POST request to `/api/o
 
 8. Viewing Orders:
 
-To view the orders placed by a user, send a GET request to `/api/orders/`.  whose orders you want to view. This will display a list of orders with their details.
+To view the orders placed by you, send a GET request to `/api/orders/`. This will display a list of orders with their details that have been created by the authenticated user.
 
 ## API Documentation
 
