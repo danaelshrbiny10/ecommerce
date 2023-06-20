@@ -78,7 +78,7 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
-The e-commerce web application should now be running locally at `http://localhost:8000/`.
+The e-commerce web application should now be running locally at `http://localhost:80/`.
 
 ## Usage
 You can use this [postman collection](https://www.postman.com/science-saganist-7786711/workspace/bit68/collection/13841690-17f0b89b-493f-429a-b478-312d42d171f7?action=share&creator=13841690) to learn more about the API usage
