@@ -9,17 +9,16 @@ services:
     depends_on:
       - db
     environment:
-      - db_name=ecommerce
-      - db_user=postgress
-      - db_password=1111
-      - db_host=db
-      - db_port=5432
-    volumes:
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_NAME=ecommerce
+      - DB_USER=postgress
+      - DB_PASSWORD=1111
       - .:/app
       - ./nginx.conf:/etc/nginx/sites-available/default
       # - ./supervisor.conf:/etc/supervisor/conf.d/
-    # command: bash -c "python src/manage.py migrate && gunicorn django.core.wsgi:get_wsgi_application --bind 0.0.0.0:8000"
-    command: gunicorn django.core.wsgi:get_wsgi_application --bind 0.0.0.0:8000
+    command: bash -c "python src/manage.py migrate && gunicorn django.core.wsgi:get_wsgi_application --bind 0.0.0.0:8000"
+    # command: gunicorn django.core.wsgi:get_wsgi_application --bind 0.0.0.0:8000
 
 
   db:
@@ -28,11 +27,10 @@ services:
       - POSTGRES_DB=ecommerce
       - POSTGRES_USER=postgress
       - POSTGRES_PASSWORD=1111
-
   nginx:
     image: nginx
     ports:
-      - '8000:8000'
+      - '8100:80'
     volumes:
       - ./nginx.conf:/etc/nginx/sites-available/default
     depends_on:
