@@ -1,13 +1,9 @@
 """API App models."""
 
 
-
 from django.db import models
 from account.models import Customer
 from core.models import TimeStampedModel
-
-
-
 
 
 class Product(TimeStampedModel):
@@ -59,10 +55,7 @@ class Order(TimeStampedModel):
         """Transfare items from cart to product."""
         cart_items = CartItem.objects.filter(user=customer)
         for items in cart_items:
-            cls.objects.create(
-                user=customer,
-                product=items.product
-            )
+            cls.objects.create(user=customer, product=items.product)
         cart_items.delete()
 
     class Meta:

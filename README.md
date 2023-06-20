@@ -1,6 +1,6 @@
 # Ecommerce Django Project
 
-[![python](https://img.shields.io/badge/Python-3.11-3776AB.svg?style=flat&logo=python&logoColor=yellow&color=darkblue)](https://www.python.org) [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)  [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-darkgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit) [![pydocstyle](https://img.shields.io/badge/pydocstyle-enabled-brown)](http://www.pydocstyle.org/en/stable/)
+[![python](https://img.shields.io/badge/Python-3.11-3776AB.svg?style=flat&logo=python&logoColor=yellow&color=darkblue)](https://www.python.org) [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)   [![pydocstyle](https://img.shields.io/badge/pydocstyle-enabled-brown)](http://www.pydocstyle.org/en/stable/)
 
 This project is an ecommerce web application built using Django and Django Rest Framework. It provides functionality for user registration, authentication, product listing, cart management, order creation, and order viewing. The project utilizes PostgreSQL as the database backend and JWT authentication for user authentication. API endpoints are documented using Swagger.
 
@@ -81,10 +81,11 @@ python manage.py runserver
 The ecommerce web application should now be running locally at `http://localhost:8000/`.
 
 ## Usage
+You can use this [postman collection](https://www.postman.com/science-saganist-7786711/workspace/bit68/collection/13841690-17f0b89b-493f-429a-b478-312d42d171f7?action=share&creator=13841690) to learn more about the API usage
 
 1. User Registration:
 
-To register a new user, send a POST request to `/api/register/` with the required user information (`username`, `password`, `email`, etc.).
+To register a new user, send a POST request to `/api/register/` with the required user information (`username`, `password`, `email`, `phone_number`, `shipping_address`, `first_name`, and `last_name`.).
 
 2. User Login:
 
@@ -96,23 +97,23 @@ To view a list of all products, send a GET request to `/api/products/`. The prod
 
 4. Searching Products:
 
-To search for products by name, send a GET request to `/api/products/?search=<search-query>`. Replace `<search-query>` with the name of the product you want to search for.
+To search for products by name, send a GET request to `/api/products/?name=<name-query>`. Replace `<search-query>` with the name of the product you want to search for.
 
 5. Adding Products to Cart:
 
-To add a product to the cart, send a POST request to` /api/cart/add/` with the` user ID`, `product ID`, and `quantity` in the request body.
+To add a product to the cart, send a POST request to` /api/cart/` with the `product ID` in the request body.
 
 6. Viewing Cart:
 
-To view the cart, send a GET request to `/api/cart/?user=<user-id>`. Replace `<user-id>` with the `ID of the user` whose cart you want to view. This will display the products currently in the cart along with their details.
+To view the cart, send a GET request to `/api/cart/. This will display the products currently in the cart along with the authanticated user details.
 
 7. Creating an Order:
 
-To create an order with the products in the cart, send a POST request to `/api/orders/create/` with the `user ID` and `product IDs` in the request body. This will create a new order using the products in the cart and clear the cart.
+To create an order with the products in the cart, send a POST request to `/api/orders/`,  This will create a new order using the products in the cart and clear the cart.
 
 8. Viewing Orders:
 
-To view the orders placed by a user, send a GET request to `/api/orders/?user=<user-id>`. Replace `<user-id>` with the `ID of the user` whose orders you want to view. This will display a list of orders with their details.
+To view the orders placed by a user, send a GET request to `/api/orders/`.  whose orders you want to view. This will display a list of orders with their details.
 
 ## API Documentation
 
@@ -124,7 +125,7 @@ The API endpoints are documented using Swagger. To access the API documentation:
 python manage.py runserver
 ```
 
-2. Open your web browser and navigate to `http://localhost:8000/swagger/`
+2. Open your web browser and navigate to `http://localhost:8000/swagger/` or `http://localhost:8000/redoc/`
 
 ## Database Backend
 

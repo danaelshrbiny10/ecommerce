@@ -28,6 +28,7 @@ class CartItemSerializer(serializers.ModelSerializer):
             "product",
         ]
 
+
 class OrderSerializer(serializers.ModelSerializer):
     """Order serializer class for order model."""
 
@@ -52,5 +53,3 @@ class CartItemCreateSerializer(serializers.Serializer):
         if not Product.objects.filter(pk=value).exists():
             raise serializers.ValidationError("This product is not avilable")
         return Product.objects.filter(pk=value).first()
-
-

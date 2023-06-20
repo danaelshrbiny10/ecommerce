@@ -1,0 +1,909 @@
+{
+	"info": {
+		"_postman_id": "e16e96c7-3cc9-4ee5-a70e-071595c61924",
+		"name": "ecommerce",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13841690"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"first_name\": \"dana\",\r\n  \"last_name\": \"elshrbiny\",\r\n  \"username\": \"danaa\",\r\n  \"shipping_address\": \"kfs\",\r\n  \"phone_number\": \"+201009040412\",\r\n  \"password\": \"123456789\",\r\n  \"email\": \"contact@danaelshrbiny.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/account/register/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"account",
+								"register",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"first_name\": \"dana\",\r\n  \"last_name\": \"elshrbiny\",\r\n  \"username\": \"danaa\",\r\n  \"shipping_address\": \"kfs\",\r\n  \"phone_number\": \"+201009040412\",\r\n  \"password\": \"123456789\",\r\n  \"email\": \"contact@danaelshrbiny.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/account/register/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"account",
+										"register",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"User registered successfully.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Save token to environment\", function() {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.collectionVariables.set(\"TOKEN\", jsonData.access);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \r\n        \"danaa\"\r\n    ,\r\n    \"password\": \r\n        \"123456789\"\r\n    \r\n}\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/account/token/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"account",
+								"token",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "token",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \r\n        \"danaa\"\r\n    ,\r\n    \"password\": \r\n        \"123456789\"\r\n    \r\n}\r\n\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/account/token/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"account",
+										"token",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY4NzM1NTIxNywiaWF0IjoxNjg3MjY4ODE3LCJqdGkiOiJlMGY2MzJkNGExY2M0OWY2YWVlZjcxMWM4MmI2N2ZmMyIsInVzZXJfaWQiOjF9.CGKGQz7jPgN0vwM3nXMvUPIPldqdHU94iylxrfGvzBk\",\n    \"access\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg3MjY5MTE3LCJpYXQiOjE2ODcyNjg4MTcsImp0aSI6ImJkZTIxNWMzZDg0NDRjY2Q4YTFjMjEzODhhOTBlZjFiIiwidXNlcl9pZCI6MX0.0FaSx9oYeSfWgxBhgySYZMGLvBarnKJsHFwTNe5MmSw\"\n}"
+						}
+					]
+				},
+				{
+					"name": "token refresh",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \r\n        \"danaa\"\r\n    ,\r\n    \"password\": \r\n        \"123456789\"\r\n    \r\n}\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/account/token/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"account",
+								"token",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "token refresh",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \r\n        \"danaa\"\r\n    ,\r\n    \"password\": \r\n        \"123456789\"\r\n    \r\n}\r\n\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/account/token/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"account",
+										"token",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY4NzM1NTYxMSwiaWF0IjoxNjg3MjY5MjExLCJqdGkiOiIyOGUxODRkMTRlZDg0N2Y5OTRiNWRmM2QyZGVlZmMwNCIsInVzZXJfaWQiOjF9.Ck9SN5LPSBsoYvZPYWARu2KHRhUowe4nIZ5v0JGzefM\",\n    \"access\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg3MjY5NTExLCJpYXQiOjE2ODcyNjkyMTEsImp0aSI6IjcyZGFlNDA3ZGRmMDQxZGM5ZTlkMDM1MjQwNDM4ZGI3IiwidXNlcl9pZCI6MX0.XQyaJHLesflHVAdGln9ZL6EPRsMei1G-r3n9NE3VJhU\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "products",
+			"item": [
+				{
+					"name": "product list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/products/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"products",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "product list",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/products/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"products",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n    \"count\": 2,\r\n    \"next\": null,\r\n    \"previous\": null,\r\n    \"results\": [\r\n        {\r\n            \"name\": \"iphone 11 pro\",\r\n            \"price\": \"100.00\"\r\n        },\r\n        {\r\n            \"name\": \"oppo\",\r\n            \"price\": \"120.00\"\r\n        }\r\n    ]\r\n}"
+						}
+					]
+				},
+				{
+					"name": "product details",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/products/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "product details",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/products/1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"products",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n    \"name\": \"iphone 11 pro\",\r\n    \"price\": \"100.00\"\r\n}"
+						}
+					]
+				},
+				{
+					"name": "product search",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/products/?name=oppo",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"products",
+								""
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "oppo"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "product search",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/products/?name=oppo",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"products",
+										""
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "oppo"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n    \"count\": 1,\r\n    \"next\": null,\r\n    \"previous\": null,\r\n    \"results\": [\r\n        {\r\n            \"name\": \"oppo\",\r\n            \"price\": \"120.00\"\r\n        }\r\n    ]\r\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "cart",
+			"item": [
+				{
+					"name": "cart list",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/cart/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"cart",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "cart list",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/cart/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"cart",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n    \"count\": 1,\r\n    \"next\": null,\r\n    \"previous\": null,\r\n    \"results\": [\r\n        {\r\n            \"id\": 1,\r\n            \"product\": {\r\n                \"name\": \"iphone 11 pro\",\r\n                \"price\": \"100.00\"\r\n            }\r\n        }\r\n    ]\r\n}"
+						}
+					]
+				},
+				{
+					"name": "add to cart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"product\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/cart/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"cart",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "add to cart",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"product\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/cart/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"cart",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n    \"message\": \"Item added to cart successfully.\"\r\n}"
+						}
+					]
+				},
+				{
+					"name": "cart list",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/cart/1/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"cart",
+								"1",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "cart list",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/cart/1/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"cart",
+										"1",
+										""
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "cart details",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/cart/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"cart",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "cart details",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/cart/1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"cart",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n    \"count\": 1,\r\n    \"next\": null,\r\n    \"previous\": null,\r\n    \"results\": [\r\n        {\r\n            \"id\": 1,\r\n            \"product\": {\r\n                \"name\": \"iphone 11 pro\",\r\n                \"price\": \"100.00\"\r\n            }\r\n        }\r\n    ]\r\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "order",
+			"item": [
+				{
+					"name": "order list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/order",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"order"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "order list",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/api/order",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"order"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"count\": 1,\n    \"next\": null,\n    \"previous\": null,\n    \"results\": [\n        {\n            \"id\": 1,\n            \"product\": {\n                \"name\": \"iphone 11 pro\",\n                \"price\": \"100.00\"\n            }\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "create order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/order/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"order",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "order",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"product\": {\r\n    \"name\": \"iphone\",\r\n    \"price\": \"10.00\"\r\n  }\r\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/order",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"order"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n    \"message\": \"Order Created successfully.\"\r\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "localhost:8000",
+			"type": "string"
+		},
+		{
+			"key": "TOKEN",
+			"value": ""
+		}
+	]
+}

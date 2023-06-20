@@ -4,7 +4,6 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("api", "0003_alter_cartitem_product_alter_cartitem_user_order"),
     ]

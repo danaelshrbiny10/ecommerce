@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from rest_framework.views import status
 from .serializers import CustomerSerializer
 
+
 class RegistrationView(generics.CreateAPIView):
     """Registration view."""
 
@@ -20,5 +21,3 @@ class RegistrationView(generics.CreateAPIView):
         return Response(
             {"message": "User registered successfully."}, status=status.HTTP_201_CREATED
         )
-
-

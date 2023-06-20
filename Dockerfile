@@ -17,19 +17,6 @@ COPY . .
 # Install gunicorn
 RUN pip3 install gunicorn
 
-# Copy NGINX configuration file
-COPY nginx.conf /etc/nginx/sites-available/default
-
-# Copy Supervisor configuration file
-COPY supervisor.conf /etc/supervisor/conf.d/
-
-# Create a directory for static files
-RUN mkdir -p /app/static
-
 # Collect static files
 RUN python3 src/manage.py collectstatic --noinput
 
-# Expose ports
-EXPOSE 8000
-
-CMD python3 src/manage.py runserver 0.0.0.0:8000 supervisord -n

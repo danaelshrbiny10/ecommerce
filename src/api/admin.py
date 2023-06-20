@@ -5,7 +5,6 @@ from django.contrib import admin
 from .models import Order, Product, CartItem
 
 
-
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     """Admin class for product model."""

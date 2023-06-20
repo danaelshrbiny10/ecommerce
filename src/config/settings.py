@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+
 # import config.settings
 
 
@@ -28,7 +29,8 @@ SECRET_KEY = "django-insecure-(^y_g6%n^mt9jav!*ok&l50c8c$7zrw&1)&#wgwpw%35mn-)p1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ["*"]
+CSRF_TRUSTED_ORIGINS = ["http://localhost:8000","http://127.0.0.1:8000"]
 
 
 # Application definition
@@ -42,8 +44,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "api",
     "account",
-    'drf_yasg',
-
+    "drf_yasg",
 ]
 
 MIDDLEWARE = [
@@ -81,13 +82,13 @@ WSGI_APPLICATION = "config.wsgi.application"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get("db_name"), 
-        'USER': os.environ.get("db_user"),
-        'PASSWORD': os.environ.get("db_password"),
-        'HOST': os.environ.get("db_host"), 
-        'PORT': os.environ.get("db_port"),
+    "default": {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": os.environ.get("DB_NAME"),
+        "USER": os.environ.get("DB_USER"),
+        "PASSWORD": os.environ.get("DB_PASSWORD"),
+        "HOST": os.environ.get("DB_HOST"),
+        "PORT": os.environ.get("DB_PORT"),
     }
 }
 
@@ -136,10 +137,12 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework_simplejwt.authentication.JWTAuthentication",
-    )
+    ),
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
+    "PAGE_SIZE": 100,
 }
 
-INSTALLED_APPS += ['flake8']
-TEST_RUNNER = 'flake8.main.Flake8TestRunner'
+INSTALLED_APPS += ["flake8"]
+TEST_RUNNER = "flake8.main.Flake8TestRunner"
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, "static")

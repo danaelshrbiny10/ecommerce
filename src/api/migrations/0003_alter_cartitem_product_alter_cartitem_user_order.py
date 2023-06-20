@@ -5,7 +5,6 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("account", "0002_customer_created_at_customer_updated_at"),
         ("api", "0002_alter_cartitem_options"),
