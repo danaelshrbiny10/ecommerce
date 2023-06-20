@@ -1,9 +1,10 @@
 {
 	"info": {
-		"_postman_id": "e16e96c7-3cc9-4ee5-a70e-071595c61924",
+		"_postman_id": "17f0b89b-493f-429a-b478-312d42d171f7",
 		"name": "ecommerce",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "13841690"
+		"_exporter_id": "13841690",
+		"_collection_link": "https://www.postman.com/science-saganist-7786711/workspace/bit68/collection/13841690-17f0b89b-493f-429a-b478-312d42d171f7?action=share&creator=13841690&source=collection_link"
 	},
 	"item": [
 		{
@@ -89,6 +90,7 @@
 									"pm.test(\"Save token to environment\", function() {\r",
 									"    var jsonData = pm.response.json();\r",
 									"    pm.collectionVariables.set(\"TOKEN\", jsonData.access);\r",
+									"    pm.collectionVariables.set(\"refresh\", jsonData.refresh);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -165,12 +167,27 @@
 				},
 				{
 					"name": "token refresh",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Save token to environment\", function() {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.collectionVariables.set(\"TOKEN\", jsonData.access);\r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \r\n        \"danaa\"\r\n    ,\r\n    \"password\": \r\n        \"123456789\"\r\n    \r\n}\r\n\r\n",
+							"raw": "{\r\n  \"refresh\": \"{{refresh}}\"\r\n}\r\n\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -178,13 +195,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/account/token/",
+							"raw": "{{url}}/account/token/refresh/",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"account",
 								"token",
+								"refresh",
 								""
 							]
 						}
@@ -212,13 +230,14 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/account/token/",
+									"raw": "{{url}}/account/token/refresh/",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"account",
 										"token",
+										"refresh",
 										""
 									]
 								}
@@ -236,7 +255,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY4NzM1NTYxMSwiaWF0IjoxNjg3MjY5MjExLCJqdGkiOiIyOGUxODRkMTRlZDg0N2Y5OTRiNWRmM2QyZGVlZmMwNCIsInVzZXJfaWQiOjF9.Ck9SN5LPSBsoYvZPYWARu2KHRhUowe4nIZ5v0JGzefM\",\n    \"access\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg3MjY5NTExLCJpYXQiOjE2ODcyNjkyMTEsImp0aSI6IjcyZGFlNDA3ZGRmMDQxZGM5ZTlkMDM1MjQwNDM4ZGI3IiwidXNlcl9pZCI6MX0.XQyaJHLesflHVAdGln9ZL6EPRsMei1G-r3n9NE3VJhU\"\n}"
+							"body": "{\n    \"access\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg3Mjc3NDEyLCJpYXQiOjE2ODcyNzcwODAsImp0aSI6IjBjYjFmMWQxZDAyMzQ2M2NhYjU1YTQ0MTJlZGZmMWRjIiwidXNlcl9pZCI6MX0.vGy7S91vTF-HB1iVZU28QG0Jzjt0q3uiqYUm8r1eVFc\"\n}"
 						}
 					]
 				}
@@ -285,10 +304,6 @@
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
-								"body": {
-									"mode": "formdata",
-									"formdata": []
-								},
 								"url": {
 									"raw": "{{url}}/api/products/",
 									"host": [
@@ -771,10 +786,6 @@
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{url}}/api/order",
 									"host": [
@@ -898,11 +909,15 @@
 	"variable": [
 		{
 			"key": "url",
-			"value": "localhost:8000",
+			"value": "http://ecommerce.danaelshrbiny.com",
 			"type": "string"
 		},
 		{
 			"key": "TOKEN",
+			"value": ""
+		},
+		{
+			"key": "refresh",
 			"value": ""
 		}
 	]
