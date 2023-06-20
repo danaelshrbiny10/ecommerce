@@ -19,7 +19,7 @@ class ProductListView(mixins.ListModelMixin, GenericAPIView):
     """View to list all products."""
 
     serializer_class = ProductSerializer
-    queryset = Product.objects.all()
+    queryset = Product.objects.all().order_by('price')
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsAuthenticated]
 
