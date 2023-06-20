@@ -1,3 +1,11 @@
 docker build -t ecommerce .
 docker-compose up
 docker-compose up --build
+
+
+docker-compose run web python src/manage.py makemigrations
+docker-compose run web python src/manage.py migrate
+docker-compose run web python src/manage.py showmigrations
+
+docker-compose logs
+

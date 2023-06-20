@@ -4,6 +4,7 @@
 from django.apps import AppConfig
 
 
+
 class CoreConfig(AppConfig):
     """Class representing the Core app and its configuration."""
 

@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+# import config.settings
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +28,7 @@ SECRET_KEY = "django-insecure-(^y_g6%n^mt9jav!*ok&l50c8c$7zrw&1)&#wgwpw%35mn-)p1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -139,3 +141,5 @@ REST_FRAMEWORK = {
 
 INSTALLED_APPS += ['flake8']
 TEST_RUNNER = 'flake8.main.Flake8TestRunner'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')

@@ -17,8 +17,10 @@ services:
     volumes:
       - .:/app
       - ./nginx.conf:/etc/nginx/sites-available/default
-      - ./supervisor.conf:/etc/supervisor/conf.d/
-    command: bash -c "python manage.py migrate && gunicorn myproject.wsgi:application --bind 0.0.0.0:8000"
+      # - ./supervisor.conf:/etc/supervisor/conf.d/
+    # command: bash -c "python src/manage.py migrate && gunicorn django.core.wsgi:get_wsgi_application --bind 0.0.0.0:8000"
+    command: gunicorn django.core.wsgi:get_wsgi_application --bind 0.0.0.0:8000
+
 
   db:
     image: postgres
@@ -30,7 +32,7 @@ services:
   nginx:
     image: nginx
     ports:
-      - '80:80'
+      - '8000:8000'
     volumes:
       - ./nginx.conf:/etc/nginx/sites-available/default
     depends_on:
